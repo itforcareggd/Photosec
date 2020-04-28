@@ -1,0 +1,10 @@
+UL {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+}
+
+UL LI {
+  display: block;
+  float: left;
+}

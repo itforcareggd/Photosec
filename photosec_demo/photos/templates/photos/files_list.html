@@ -1,0 +1,47 @@
+{% extends 'photos/base.html' %}
+
+{% block title %} file list {% endblock title %}
+
+{% block content %}
+	<h2>Login</h2>
+	<form method="post">
+		{% csrf_token %}
+		{% if files_list %}
+			<ul id="photolist">
+			{% for file in files_list %}
+				<li>{{ file.title }}</a> <img id="{{file.id}}" src="{{file.photo.url}}" alt="{{file.name}}" style="max-height: 150px"><input type="checkbox" name="{{file.id}}" value="checked"/></li>
+			{% endfor %}
+			</ul>
+		{% else %}
+				<p>No files are available.</p>
+		{% endif %}
+		<button type="submit">Delete</button>
+	</form>
+{% endblock content %}
+
+{% block javascript %}
+<script>
+setInterval(function(){
+	$.ajax({
+       url: '/ajax/retrievephotos/',
+       data: {
+       },
+       dataType: 'json',
+       success: function (data) {
+
+		   var listphotos = $('#photolist')
+		   
+		   $.each(data, function(i, photo) {
+			   var result = data[i]
+			   if ($("#" + result["id"]).length == 0) {
+				   var htmlphoto = '<li>' + result["title"] + '</a> <img id="' + result["id"] + '" src="' + result["photo"] + '" alt="' + result["title"] + '" style="max-height: 150px"></li>';
+				   $(htmlphoto).appendTo($(listphotos))
+			   }
+		   })
+	   }
+		   
+     });
+ // this will run after every 5 seconds
+}, 5000);
+</script>
+{% endblock javascript %}
