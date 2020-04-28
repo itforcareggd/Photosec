@@ -2,12 +2,20 @@
 <html>
   <head>
 	  {% load static %}
-	<!-- css files here-->
+    <link rel="stylesheet" type="text/css" href="{% static 'photos/style.css' %}">
     <meta charset="utf-8">
     <title>{% block title %} hier komt de title {% endblock title %}</title>
   </head>
   <body>
-   
+{% block header %}
+  <ul class="header_ul">
+  <li class="header_li"><a href="/qrcode">QR code</a></li>
+  <li class="header_li"><a href="/files">Uploaded files</a></li>
+  <li class="header_li right"><a href="/logout">Logout</a></li>
+
+</ul>
+{% endblock header %}
+
 {% block content %} 
 	Hier komt de content
 {% endblock content%}  

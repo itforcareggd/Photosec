@@ -2,6 +2,9 @@
 
 {% block title %} Login {% endblock title %}
 
+{% block header %}
+{% endblock header %}
+
 {% block content %}
 	<h2>Login</h2>
 	<form method="post">
@@ -9,4 +12,6 @@
 		{{ form.as_p }}
 		<button type="submit">Login</button>
 	</form>
+
+	<a href="/createuser">Create User</a>
 {% endblock content %}

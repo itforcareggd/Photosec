@@ -1,0 +1,21 @@
+{% extends 'photos/base.html' %}
+
+{% block title %} Create user {% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+	<h2>Create User</h2>
+	<form method="post">
+		{% csrf_token %}
+		{% if error %}
+		<h2>{{ error }}</h2>
+		{% endif %}
+		<p><label for="username">Username: </label><input type=text id="username" name="username"/></p>
+		<p><label for="password">Password: </label><input type=password id="password" name="password"/></p>
+		<button type="submit">Create</button>
+	</form>
+
+	<a href="/login">Back to login</a>
+{% endblock content %}

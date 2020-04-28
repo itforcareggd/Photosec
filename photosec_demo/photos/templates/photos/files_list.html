@@ -3,7 +3,7 @@
 {% block title %} file list {% endblock title %}
 
 {% block content %}
-	<h2>Login</h2>
+	<h2>Files</h2>
 	<form method="post">
 		{% csrf_token %}
 		{% if files_list %}
@@ -13,7 +13,8 @@
 			{% endfor %}
 			</ul>
 		{% else %}
-				<p>No files are available.</p>
+				<ul id="photolist"></ul>
+				<p id="no_files">No files are available.</p>
 		{% endif %}
 		<button type="submit">Delete</button>
 	</form>
@@ -28,14 +29,15 @@ setInterval(function(){
        },
        dataType: 'json',
        success: function (data) {
-
+		   
 		   var listphotos = $('#photolist')
 		   
 		   $.each(data, function(i, photo) {
 			   var result = data[i]
 			   if ($("#" + result["id"]).length == 0) {
-				   var htmlphoto = '<li>' + result["title"] + '</a> <img id="' + result["id"] + '" src="' + result["photo"] + '" alt="' + result["title"] + '" style="max-height: 150px"></li>';
+				   var htmlphoto = '<li>' + result["title"] + '</a> <img id="' + result["id"] + '" src="' + result["photo"] + '" alt="' + result["title"] + '" style="max-height: 150px"><input type="checkbox" name="' + result["id"] + '" value="checked"/></li>';
 				   $(htmlphoto).appendTo($(listphotos))
+				   $('#no_files').remove();
 			   }
 		   })
 	   }
