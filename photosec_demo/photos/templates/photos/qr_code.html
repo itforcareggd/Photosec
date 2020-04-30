@@ -4,6 +4,6 @@
 
 {% block content %}
 			{% load static %}
-			<p>qr code placeholder {{user_id}} {{user_token}} {{app_id}}<img src="{% static "photos/test-elonisas.jpg" %}" alt="placeholder" style="max-height: 300px"></p>
+			<img src="https://a-photosec.itforcare.nl/api/qr/?app={{app_id}}&code={{user_token}}&user={{user_id}}&time=1800" alt="QR code" style="max-height: 300px"></p>
  
 {% endblock content %}

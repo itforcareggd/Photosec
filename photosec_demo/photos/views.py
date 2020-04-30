@@ -59,7 +59,7 @@ def qr_code(request):
     context = {
         "user_id": request.user.id,
         "user_token": token.key,
-        "app_id": "photosec_app",
+        "app_id": "photosecdemo",
     }
 
     return HttpResponse(template.render(context, request))
