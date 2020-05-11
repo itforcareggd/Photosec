@@ -1,0 +1,6 @@
+{
+    "require": {
+        "firebase/php-jwt": "^5.0",
+        "ziplr/php-qr-code": "^1.0"
+    }
+}
