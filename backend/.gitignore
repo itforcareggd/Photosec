@@ -1,2 +1,2 @@
-.server/conf.inc.local.php
+.server/config.inc.local.php
 vendor

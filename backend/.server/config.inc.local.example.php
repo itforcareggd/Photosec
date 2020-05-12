@@ -80,9 +80,9 @@
           ),
         ),
         'photosecdemo' => array(
-          'url'  => 'https://photosecdemo.herokuapp.com/photoupload/', // photoupload/<int:user>/<str:token>
+          'url'  => 'https://photosecdemo.herokuapp.com/photoupload/',
           'post' => array(
-            'user'      => '$user',
+            'username'  => '$user',
             'token'     => '$code',
             'file'      => '$file',
             'type'      => '$type',
